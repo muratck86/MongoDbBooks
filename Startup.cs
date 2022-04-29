@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using MongoDbBooks.Models;
+using MongoDbBooks.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,12 @@ namespace MongoDbBooks
                 Configuration.GetSection(nameof(MongoDbBooksDbSettings)));
 
             services.AddSingleton<IBooksDbSettings>(sp =>
-            sp.GetRequiredService<IOptions<MongoDbBooksDbSettings>>().Value);
+                sp.GetRequiredService<IOptions<MongoDbBooksDbSettings>>().Value);
+
+            services.AddSingleton<IBookService, BookService>();
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoDbBooks", Version = "v1" });
