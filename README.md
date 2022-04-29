@@ -8,6 +8,12 @@
   ```
   C:\Program Files\MongoDB\Server\{Monbo version}\bin
   ```
+- Choose (or create) a directory to store your data. For example: `C:\BooksData`.
+- Open a CMD or PowerShell and run the command:
+```
+mongod --dbpath <your chosen data folder path>
+```
+leave the cmd open.
   
 # Project
 

@@ -37,7 +37,8 @@ namespace MongoDbBooks
 
             services.AddSingleton<IBookService, BookService>();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(opt => opt.UseMemberCasing());
 
             services.AddSwaggerGen(c =>
             {
