@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using MongoDbBooks.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,11 @@ namespace MongoDbBooks
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MongoDbBooksDbSettings>(
+                Configuration.GetSection(nameof(MongoDbBooksDbSettings)));
+
+            services.AddSingleton<IBooksDbSettings>(sp =>
+            sp.GetRequiredService<IOptions<MongoDbBooksDbSettings>>().Value);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

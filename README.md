@@ -15,3 +15,6 @@
 ```
 Install-Package MongoDB.Driver -Version {VERSION}
 ```
+- MongoDb has data annotations like EFs to configure Entity properties.
+- Configure appsettings.Json and DbSettings.cs (in the Models folder), these two have exact same property names to easily map between.
+- Register Db settings in the Startup.cs.
