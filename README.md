@@ -29,3 +29,9 @@ Install-Package MongoDB.Driver -Version {VERSION}
 **Note:**
     - Collection in Mongo roughly represents a Table in SQL datagbases.
     - Document in Mongo roughly represents Entity or one row in a SQL database Table.
+
+## Serialization of Json Responses
+Propery names will be in lower case in Json, if you prefer to match the casing, add the package below to your project, then register in the Startup.cs. After that, your Requests and Responses will be in Pascal case like in your classes.
+```
+Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```
